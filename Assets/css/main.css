@@ -1,0 +1,520 @@
+/* VARIABLES GENERALES DE LA PALETA DE COLORES A USAR */
+
+:root{
+    --color-P:#573b8a;
+    --color-O:#6d44b8;
+    --color-L: rgba(132, 139, 200, 0.18);
+    --color-D: #ff7782;
+    --color-Dar: #363949; 
+    --color-S: #3341CF;
+    --color-DV: #677483;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --pading: 1.2rem;
+    
+    --box-shadow: 0 2rem 3rem var gray;
+}
+
+/* ESTRUCTURANDO CONTAINER GENERAL PARA NO TENER MARGEN
+ NI ESPACIADO INNECESARIO */
+
+body {
+    background: #FCE9E5;
+} 
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ESTILOS DEL SIDEBAR COMIENZO */
+
+.usuarioImg {
+    width: 50px;
+    border-radius: 100%;
+    border: 1px solid #eee;
+}
+
+.sideBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 120vh;
+    width: 250px;
+    background:#8673a1;
+    padding: 0.4rem 0.8rem;
+    transition: 0.5s ease;
+}
+
+.contenidoMain #btn {
+    cursor: pointer;
+    position: absolute;
+    color: #000;
+    top: .8rem;
+    right: -15rem;
+    display: none;
+    padding: 3px;
+}
+
+.sideBar .top .logo {
+    color: #FFF;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    pointer-events: none;
+    opacity: 1;
+    font-weight: bold;
+}
+
+.top .logo #logotipo {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    margin-right: 8px;
+}
+
+.logoImg {
+    width: 35px;
+    border-radius: 100%;
+    border: 1px solid black;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    margin: 2.4rem 0;
+}
+
+.usuario p {
+    color: #FFF;
+    opacity: 1;
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.sideBar ul li {
+    position: relative;
+    list-style-type: none;
+    height: 20px;
+    width: 90%;
+    margin: 2rem auto;
+    font-weight: bold;
+    line-height: 50px;
+}
+
+.sideBar ul li a {
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+    transition: 0.25s;
+}
+
+.sideBar ul li a:hover {
+    background-color: #f4f0e5;
+    color: #000;
+    transform: scale(1.07);
+}
+
+.sideBar ul li a #icons {
+    min-width: 50px;
+    text-align: center;
+    height: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+
+}
+
+/* ESTILOS DEL SIDERBAR FINAL */
+
+/* CONTENIDO PRINCIPAL */
+
+.contenidoMain {
+    position: relative;
+    background-color: #eee;
+    min-height: 120vh;
+    top: 0;
+    left: 250px;
+    transition: all 0.5s ease;
+    width: calc(100% - 250px);
+    padding: 1rem;
+    background: #f4f4f4;
+}
+
+.desaparezco {
+    display: none;
+}
+
+.container {
+    margin-top: 10px;
+}
+
+.container h1 {
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+/* ESTILOS DEL CALENDARIO */
+
+
+.container .date {
+    background: #ffffff;
+    display: inline-block;
+    border-radius: var(--border-radius-1);
+    margin-top: 1rem;
+    padding: 0.5rem 1.6rem;
+}
+
+.container .date input[type='date'] {
+    background: transparent;
+    color: black;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+.container button {
+    transition: 0.5s ease;
+    border-radius: 10px !important;
+    font-weight: bold !important;
+}
+
+.container button:hover {
+    transform: scale(1.10);
+}
+
+/* ESTILOS DE LAS CARTAS DE RESUMEN */
+
+.container .elementos {
+    display: grid;
+    margin-top: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+}
+
+.container .elementos > div .topElemento {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.6rem;
+}
+
+.container .elementos > div {
+    background: #ffffff;
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: 5px 4px 5px 1px rgba(0, 0, 0, 0.7);
+}
+
+.container .elementos > div h1 {
+   color: black;
+}
+
+.container .elementos > div span {
+    color: #fff;
+    padding: 0.5rem;
+    font-size: 2rem;
+    background: var(--color-O);
+    border-radius: 50%;
+    margin-bottom: 6px;
+}
+
+.container .elementos > div.elemento2 span {
+    background:var(--color-D) ;
+}
+
+.container .elementos > div.elemento3 span {
+    background: var(--color-S);
+}
+
+.container .elementos > div .centro {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+/* VENTAS RECIENTE ESTILOS */
+
+.warning {
+    color: #f00 !important;
+}
+
+.primary {
+    color: #00f !important;
+}
+
+.success {
+    color: rgba(10, 92, 21, 0.925) !important;
+}
+
+.titleColor {
+    color: #8673a1 !important;
+}
+
+.añadir {
+    margin-top: 10px;
+    padding: 5px;
+    border: none;
+    transition: .25s ease;
+    background: #8673a1;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.añadir:hover {
+    transform: scale(1.1);
+}
+
+.container .tabla{
+    margin-top: 2rem;
+    margin-left: 1rem;
+}
+
+.container h2 {
+    margin-bottom: 1.8rem;
+    color: #fff;
+}
+
+.container .tabla{
+    background: #fff;
+    width: 95%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    box-shadow: 5px 4px 5px 1px rgba(0, 0, 0, 0.7);
+
+}
+
+.container .tabla > div .dt-layout-row .dt-start .dt-length label {
+    font-weight: bold;
+}
+
+.container .tabla > div .dt-layout-row .dt-start .dt-length select {
+    border-radius: 10px;
+    border: 1px solid black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.container .tabla > div .dt-layout-row .dt-end .dt-search label {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.container .tabla > div .dt-layout-row .dt-end .dt-search input {
+    font-weight: bold;  
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+} 
+
+.container .tabla > div .dt-layout-row .dt-start .dt-info {
+    font-weight: bold;
+}
+
+.container .tabla > div .dt-layout-row .dt-end .paging_full_numbers > button {
+    font-weight: bold;
+}
+
+
+.container .tabla .table tr {
+    height: 2.8rem !important;
+    border-bottom: 1px solid var(--color-L) !important;
+    color: black !important;
+}   
+
+.container .tabla .table tbody td {
+    height: 2.8rem !important;
+    border-bottom: 1px solid var(--color-L) !important;
+    color: black !important;
+    font-weight: bold !important;
+}
+
+.container .tabla .table tbody td button {
+    padding: 4px 4px;
+    margin-left: 10px;
+    background: transparent;
+    color: black;
+    transition: 0.25s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.container .tabla .table tbody td .btn-danger {
+    transition: 0.25s ease;
+    color: #f00;
+}
+
+.container .tabla .table tbody td .btn-danger:hover { 
+    transform: scale(1.2);
+}
+
+.container .tabla .table tbody td button:hover {
+    transform: scale(1.2);
+}
+
+.modal-content {
+    padding: var(--card-padding);
+    border-radius: var(--border-radius-1);
+}
+
+.modal-content .modal-header {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.modal-content .modal-body label {
+    margin: 0.7rem auto auto auto;
+}
+
+.modal-content .modal-body label {
+    font-weight: bold;
+}
+
+.modal-content .modal-body input[type='text'] {
+    cursor: pointer;
+    font-weight: bold !important;
+    margin-bottom: 1rem !important;
+    border-bottom: 2.5px solid #e15e6d49 !important;
+    outline: none !important;
+}
+
+.modal-content .modal-body input[type='password'] {
+    cursor: pointer;
+    font-weight: bold !important;
+    border-bottom: 2.5px solid #e15e6d49 !important;
+    margin-bottom: 1rem !important;
+    outline: none !important;
+}
+
+.modal-content .modal-body select {
+    cursor: pointer;
+    font-weight: bold !important;
+    border-bottom: 2.5px solid #e15e6d49 !important;
+    margin-bottom: 1rem !important;
+    outline: none !important;
+    margin-bottom: 0.5rem;
+}
+
+.modal-content .modal-body textarea {
+    cursor: pointer;
+    font-weight: bold !important;
+    border: 2.5px solid #e15e6d49 !important;
+    margin-bottom: 1rem !important;
+    outline: none !important;
+    margin-bottom: 0.5rem;
+}
+
+.modal-content .modal-body #changeIt label {
+    font-weight: bold;
+}
+
+.modal-content .modal-header h5 {
+    font-weight: bold;
+}
+
+
+.modal-content .modal-footer button {
+    transition: 0.25s ease;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.modal-content .modal-footer button:hover {
+    transform: scale(1.10);
+}
+
+.tabla .venta > div > input {
+    font-weight: bold;
+    border-bottom: 2.5px solid #e15e6d49;
+    outline: none !important;
+}
+
+.tabla .ventaTotal > div > input {
+    font-weight: bold;
+    border-bottom: 2.5px solid #e15e6d49;
+    outline: none !important;
+}
+
+.fixText {
+    text-decoration: none !important;
+    color: #fff !important;
+}
+
+.container .box1 .tabla > div input[type="text"] {
+    cursor: pointer;
+    font-weight: bold !important;
+    border-bottom: 2.5px solid #e15e6d49 !important;
+    margin-bottom: 1rem !important;
+    outline: none !important;
+}
+
+.container .box1 .tabla > div textarea {
+    cursor: pointer;
+    font-weight: bold !important;
+    border: 2.5px solid #e15e6d49 !important;
+    margin-bottom: 1rem !important;
+    outline: none !important;
+}
+
+.container .box1 .tabla > div label {
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .sideBar {
+        display: none;
+        width: 100%;
+        height: 160vh;
+        z-index: 20;
+    }
+    .contenidoMain {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .container .elementos {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .container .elementos > div {
+        width: 180%;
+    }
+    .contenidoMain #btn {
+        display: block;
+    }
+    .sideBar.activo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .container .tabla {
+        width: 500px;
+    }
+    .sideBar .logo {
+        flex-direction: column;
+    }
+    .sideBar .logo span {
+        display: none;
+    }
+  }
