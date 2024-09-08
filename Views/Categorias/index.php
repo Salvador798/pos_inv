@@ -34,7 +34,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-            <button class="añadir" type="button" onclick="registrarCat(event);" id="btnAccion">Registrar</button>
+                <button class="añadir" type="button" onclick="registrarCat(event);" id="btnAccion">Registrar</button>
             </div>
         </div>
     </div>

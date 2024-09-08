@@ -1,5 +1,5 @@
 <?php include "Views/Components/header.php"; ?>
-<h1 class="title flex align-center">Inicio | Productos</h1>
+<h1 class="title flex align-center">Inicio | Repuestos</h1>
 
 <!-- -------------------- END OF TOTALS ------------>
 <div class="recent-orders mb-5">

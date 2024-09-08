@@ -1,7 +1,8 @@
 <?php include "Views/Components/header.php"; ?>
 <h1>Inicio</h1>
 <div class="date">
-    <input type="date" value="<?php echo date("Y-m-d"); ?>" disabled>
+    <input type="date" value="<?php date_default_timezone_set('America/Caracas');
+                                echo date("Y-m-d"); ?>" disabled>
 </div>
 <!-- CONTENIDO DE RESUMEN -->
 <div class="elementos">

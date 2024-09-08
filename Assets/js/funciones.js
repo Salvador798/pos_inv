@@ -2,12 +2,7 @@ let tblUsuarios, tblProveedores, tblCategorias, tblMarcas, tblProductos;
 document.addEventListener("DOMContentLoaded", function () {
   tblUsuarios = $("#tblUsuarios").DataTable({
     language: {
-      info: "Mostrando la página _PAGE_ de _PAGES_",
-      infoEmpty: "No records available",
-      infoFiltered: "(filtrado de _MAX_ registros totales)",
-      lengthMenu: "Mostrar _MENU_ Registros por página",
-      zeroRecords: "Nada encontrado - Disculpe",
-      search: "Buscar",
+      url: APP_URL + "Assets/js/es-Es.json",
     },
     order: [
       [3, "asc"],
@@ -38,12 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Tabla Proveedores
   tblProveedores = $("#tblProveedores").DataTable({
     language: {
-      info: "Mostrando la página _PAGE_ de _PAGES_",
-      infoEmpty: "No records available",
-      infoFiltered: "(filtrado de _MAX_ registros totales)",
-      lengthMenu: "Mostrar _MENU_ Registros por página",
-      zeroRecords: "Nada encontrado - Disculpe",
-      search: "Buscar",
+      url: APP_URL + "Assets/js/es-Es.json",
     },
     order: [
       [5, "asc"],
@@ -80,12 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Tabla Categorias
   tblCategorias = $("#tblCategorias").DataTable({
     language: {
-      info: "Mostrando la página _PAGE_ de _PAGES_",
-      infoEmpty: "No records available",
-      infoFiltered: "(filtrado de _MAX_ registros totales)",
-      lengthMenu: "Mostrar _MENU_ Registros por página",
-      zeroRecords: "Nada encontrado - Disculpe",
-      search: "Buscar",
+      url: APP_URL + "Assets/js/es-Es.json",
     },
     order: [
       [2, "asc"],
@@ -113,12 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Tabla Marcas
   tblMarcas = $("#tblMarcas").DataTable({
     language: {
-      info: "Mostrando la página _PAGE_ de _PAGES_",
-      infoEmpty: "No records available",
-      infoFiltered: "(filtrado de _MAX_ registros totales)",
-      lengthMenu: "Mostrar _MENU_ Registros por página",
-      zeroRecords: "Nada encontrado - Disculpe",
-      search: "Buscar",
+      url: APP_URL + "Assets/js/es-Es.json",
     },
     order: [
       [2, "asc"],
@@ -146,12 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Tabla Productos
   tblProductos = $("#tblProductos").DataTable({
     language: {
-      info: "Mostrando la página _PAGE_ de _PAGES_",
-      infoEmpty: "No records available",
-      infoFiltered: "(filtrado de _MAX_ registros totales)",
-      lengthMenu: "Mostrar _MENU_ Registros por página",
-      zeroRecords: "Nada encontrado - Disculpe",
-      search: "Buscar",
+      url: APP_URL + "Assets/js/es-Es.json",
     },
     order: [
       [5, "asc"],
@@ -173,6 +148,13 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       {
         data: "precio_venta",
+        render: function (data, type, row) {
+          if (type === "display") {
+            const formattedPrice = numberFormat(data, 2, ",", ".");
+            return `Bs ${formattedPrice}`;
+          }
+          return data;
+        },
       },
       {
         data: "cantidad",
@@ -188,12 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Historial de compras
   $("#t_historial_c").DataTable({
     language: {
-      info: "Mostrando la página _PAGE_ de _PAGES_",
-      infoEmpty: "No records available",
-      infoFiltered: "(filtrado de _MAX_ registros totales)",
-      lengthMenu: "Mostrar _MENU_ Registros por página",
-      zeroRecords: "Nada encontrado - Disculpe",
-      search: "Buscar",
+      url: APP_URL + "Assets/js/es-Es.json",
     },
     order: [[2, "desc"]],
     ajax: {
@@ -217,12 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   $("#t_historial_v").DataTable({
     language: {
-      info: "Mostrando la página _PAGE_ de _PAGES_",
-      infoEmpty: "No records available",
-      infoFiltered: "(filtrado de _MAX_ registros totales)",
-      lengthMenu: "Mostrar _MENU_ Registros por página",
-      zeroRecords: "Nada encontrado - Disculpe",
-      search: "Buscar",
+      url: APP_URL + "Assets/js/es-Es.json",
     },
     order: [[2, "desc"]],
     ajax: {
@@ -245,6 +217,34 @@ document.addEventListener("DOMContentLoaded", function () {
     ],
   });
 });
+
+// Formatear el precio a Bs
+function numberFormat(number, decimals, decPoint, thousandsSep) {
+  if (number == null || !isFinite(number)) {
+    throw new TypeError("El número no es válido");
+  }
+
+  if (!decimals) {
+    const len = number.toString().split(".").length;
+    decimals = len > 1 ? len : 0;
+  }
+
+  if (!decPoint) {
+    decPoint = ".";
+  }
+
+  if (!thousandsSep) {
+    thousandsSep = ",";
+  }
+
+  number = parseFloat(number).toFixed(decimals);
+  number = number.replace(".", decPoint);
+
+  const splitNum = number.split(decPoint);
+  splitNum[0] = splitNum[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSep);
+
+  return splitNum.join(decPoint);
+}
 
 // Usuarios
 // Mostrar la ventana de Usuario
