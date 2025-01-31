@@ -22,14 +22,14 @@ class CategoriasModel extends Query
             $datos = array($this->nombre);
             $data = $this->save($sql, $datos);
             if ($data == 1) {
-                $res = "ok";
+                $lastId = $this->getLastInsertId();
+                $res = ["status" => "ok", "id" => $lastId];
             } else {
-                $res = "error";
+                $res = ["status" => "error"];
             }
         } else {
-            $res = "existe";
+            $res = ["status" => "existe"];
         }
-
         return $res;
     }
     public function modificarCategoria(string $nombre, int $id)

@@ -25,12 +25,13 @@ class ProveedoresModel extends Query
             $datos = array($this->rif, $this->nombre, $this->telefono, $this->direccion);
             $data = $this->save($sql, $datos);
             if ($data == 1) {
-                $res = "ok";
+                $lastId= $this->getLastInsertId();
+                $res = ["status" => "ok", "id" => $lastId];
             } else {
-                $res = "error";
+                $res = ["status" => "error"];
             }
         } else {
-            $res = "existe";
+            $res = ["status" => "existe"];
         }
 
         return $res;
@@ -51,6 +52,7 @@ class ProveedoresModel extends Query
             $res = "error";
         }
         return $res;
+ 
     }
     public function editarProve(int $id)
     {

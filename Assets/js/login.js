@@ -23,12 +23,19 @@ function frmLogin(e) {
         if (res == "ok") {
           window.location = APP_URL + "Administracion/home";
         } else {
-          document.getElementById("alerta").classList.remove("d-none");
-          document.getElementById("alerta").innerHTML = res;
-          usuario.value = "";
-          clave.value = "";
+          alertas(res, "warning");
         }
       }
     };
   }
+}
+
+function alertas(mensaje, icono) {
+  Swal.fire({
+    position: "center",
+    icon: icono,
+    title: mensaje,
+    showConfirmButton: false,
+    timer: 3000,
+  });
 }

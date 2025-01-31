@@ -7,25 +7,44 @@ class AdministracionModel extends Query
         parent::__construct();
     }
 
-    public function getEmpresa()
+    public function getEmpresa(string $table)
     {
-        $sql = "SELECT * FROM configuracion";
+        $sql = "SELECT * FROM $table";
         $data = $this->select($sql);
         return $data;
     }
 
     public function getDatos(string $table)
     {
-        $sql = "SELECT COUNT(*) AS total FROM $table";
+        $sql = "SELECT COUNT(*) AS total FROM $table WHERE estado = 1";
         $data = $this->select($sql);
         return $data;
     }
 
-    public function modificar(string $nombre, string $telefono, string $dir, string $mensaje, int $id)
+    public function modificar(string $rif, string $nombre, string $telefono, string $dir, int $id)
     {
+        $sql = "UPDATE configuracion SET rif = ?, nombre = ?, telefono = ?, direccion = ?, id = ?";
+        $datos = array($rif, $nombre, $telefono, $dir, $id);
+        $data = $this->save($sql, $datos);
+        if ($data == 1) {
+            $res = "ok";
+        } else {
+            $res = "error";
+        }
+        return $res;
+    }
 
-        $sql = "UPDATE configuracion SET nombre = ?, telefono = ?, direccion = ?, mensaje = ?, id = ?";
-        $datos = array($nombre, $telefono, $dir, $mensaje, $id);
+    public function dolar()
+    {
+        $sql = "SELECT * FROM tasa";
+        $data = $this->select($sql);
+        return $data;
+    }
+
+    public function tasaDolar(string $precio_dolar, int $id)
+    {
+        $sql = "UPDATE tasa SET precio_dolar = ? WHERE id = ?";
+        $datos = array($precio_dolar, $id);
         $data = $this->save($sql, $datos);
         if ($data == 1) {
             $res = "ok";

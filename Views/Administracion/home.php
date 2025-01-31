@@ -1,9 +1,6 @@
 <?php include "Views/Components/header.php"; ?>
-<h1>Inicio</h1>
-<div class="date">
-    <input type="date" value="<?php date_default_timezone_set('America/Caracas');
-                                echo date("Y-m-d"); ?>" disabled>
-</div>
+<h1 class="title flex align-center">Inicio</h1>
+<h6>Inicio</h6>
 <!-- CONTENIDO DE RESUMEN -->
 <div class="elementos">
     <div class="elemento">
@@ -35,34 +32,32 @@
         </div>
         <div class="centro">
             <h3>Repuestos</h3>
-            <h3><?php echo $data['productos']['total']; ?></h3>
+            <h3><?php echo $data['repuestos']['total']; ?></h3>
         </div>
     </div>
-    <!-- ------------- Carta de las Compras -------------- -->
-    <div class="elemento">
-        <div class="topElemento">
-            <span class="material-symbols-outlined">inventory_2</span>
-            <span class="material-symbols-outlined">analytics</span>
-        </div>
-        <div class="centro">
-            <h3>Entrada de Repuestos</h3>
-            <h3><?php echo $data['compras']['total']; ?></h3>
-        </div>
-    </div>
-    <!-- ------------- Card de las Ventas -------------- -->
-    <div class="elemento2">
-        <div class="topElemento">
-            <span class="material-symbols-outlined">inventory</span>
-            <span class="material-symbols-outlined">analytics</span>
-        </div>
-        <div class="centro">
-            <h3>Salida de Repuestos</h3>
-            <h3><?php echo $data['ventas']['total']; ?></h3>
-        </div>
-    </div>
-    <!-- ------------- Fin de la carta Ventas -------------- -->
 </div>
 <!-- TABLA DE RECIENTES VENTAS -->
-<div class="container">
+<div class="recent-orders mb-5">
+    <div class="recent-orders tabla">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-between mb-4">
+            <div class="centro">
+                <h3>Repuestos por Reponer</h3>
+            </div>
+        </div>
+        <table class="table stripe hover compact" id="tblReposicion">
+            <thead class="thead-bold">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Stock Disp</th>
+                    <th>Stock Minimo</th>
+                    <th>Marca</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+            <tbody class="table__body">
+            </tbody>
+        </table>
+    </div>
 </div>
 <?php include "Views/Components/footer.php"; ?>
